@@ -1,0 +1,113 @@
+.menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 60px;
+  background-color: #292929;
+  transition: width .7s ease;
+  z-index: 2;
+  overflow: visible;
+}
+
+.menu.opened {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.menu::before {
+  content: '';
+  display: block;
+  position: absolute;
+  left: 100%;
+  top: 0;
+  bottom: 0;
+  width: 0;
+  background-color: rgb(245, 148, 57);
+  z-index: -1;
+  transition: width 1s ease-in-out;
+}
+
+.menu.opened::before {
+  width: 100%;
+}
+
+.toggler {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  left: 30px;
+  transform: translate(-50%, -50%);
+  height: 40px;
+  width: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.toggle-menu {
+  position: relative;
+  cursor: pointer;
+  height: 40px;
+  transition: height .3s ease;
+}
+
+.menu.opened .toggle-menu {
+  height: 0;
+}
+
+.menu.opened .toggle-menu::after {
+  transform: translateY(-50%) rotateZ(45deg);
+  height: 40px;
+  right: 0;
+  transition: all .3s ease;
+}
+
+.menu.opened .toggle-menu::before {
+  transform: translateY(-50%) rotateZ(-45deg);
+  height: 40px;
+  left: 0;
+  transition: all .3s ease;
+}
+
+.toggle-menu,
+.toggle-menu::before,
+.toggle-menu::after {
+  background-color: #a2a2a2;
+  outline: none;
+  font-size: 0;
+  border: none;
+  width: 3px;
+  padding: 0;
+}
+
+.toggle-menu::before,
+.toggle-menu::after {
+  position: absolute;
+  content: '';
+  top: 50%;
+  transform: translateY(-50%);
+  display: inline-block;
+  height: 20px;
+}
+
+.toggle-menu::before {
+  left: -9px;
+}
+
+.toggle-menu::after {
+  right: -9px;
+}
+
+@keyframes animateMenuButton {
+  0% {
+    transform: scaleY(1)
+  }
+  20% {
+    transform: scaleY(1.5)
+  }
+  40% {
+    transform: scaleY(1)
+  }
+}
