@@ -2,7 +2,7 @@ ul.menu-list {
   list-style: none;
   padding: 0;
   margin: 0;
-  margin-left: 80px;
+  margin-left: 20px;
   font-size: 36px;
   font-family: 'Raleway', sans-serif;
   opacity: 0;
@@ -16,7 +16,7 @@ ul.menu-list {
   transition: opacity .5s ease;
 }
 
-.menu-list__link:hover {
+.menu-list__link:hover, .menu-list__link.active {
   opacity: 1;
 }
 

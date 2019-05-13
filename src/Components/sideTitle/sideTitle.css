@@ -1,0 +1,16 @@
+.side-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 36px;
+  writing-mode: vertical-lr;
+  transform: rotateZ(180deg);
+  background-color: #292929;
+  align-self: flex-start;
+  width: 250px;
+  height: 600px;
+}
+
+.side-title h1 {
+  margin: 0;
+  line-height: 250px;
+  text-align: center;
+}

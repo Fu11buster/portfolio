@@ -2,8 +2,20 @@ body {
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #343434;
+  font-family: 'Raleway', sans-serif;
+  color: #fff;
 }
 
 * {
   box-sizing: border-box;
+}
+
+span.red-char {
+  color: #a71414;
+}
+
+#root {
+  width: 100%;
+  height: 100vh;
 }

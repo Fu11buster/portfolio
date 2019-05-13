@@ -14,7 +14,7 @@ const menuList = [
   },
   {
     name: 'Works',
-    link: 'works'
+    link: '/works'
   },
   {
     name: 'Contacts',
@@ -36,15 +36,19 @@ export default class MainMenu extends Component {
   render() {
     const { menuOpened } = this.state;
     return (
-      <div className={`menu ${menuOpened && 'opened'}`}>
+      <section className={`menu ${menuOpened ? 'opened' : ''}`}>
+        <div className="logo">
+          <span className="red-char">N</span>ikolay <span className="red-char">S</span>tepin
+        </div>
+
         <div className="toggler" onClick={this.toggleMenu}>
           <button className="toggle-menu" >
             {!menuOpened ? 'Открыть' : 'Закрыть'}
           </button>
         </div>
         
-        {menuOpened && <MenuList list={menuList} />}
-      </div>
+        {menuOpened && <MenuList list={menuList} handleClick={this.toggleMenu}/>}
+      </section>
     )
   }
 }

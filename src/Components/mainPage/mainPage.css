@@ -1,0 +1,16 @@
+.promoText {
+  margin-left: 70px;
+  margin-bottom: 200px;
+  max-width: 800px;
+  font-size: 18px;
+}
+
+.promoText p {
+  color: rgba(255, 255, 255, .5);
+  margin: 0;
+  margin-bottom: 5px;
+}
+
+.promoText p span {
+  color: rgba(255, 255, 255, 1);
+}
