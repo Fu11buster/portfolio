@@ -7,8 +7,8 @@ export default class MainPage extends Component {
     super();
     this.state = {
       promoText: [
-        'Hi, nice to met you on my web-site.',
-        'I’m junior frontend developer. There you can find my works, and know about my skills.',
+        'Hi, nice to see you on my web-site.',
+        'I’m junior frontend developer. Here you can find my works, and know about my skills.',
         'If you want your own website, contact me.',
         'More information below.',
       ],

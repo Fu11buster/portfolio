@@ -1,0 +1,30 @@
+.scroll-block__text {
+  text-transform: uppercase;
+  color: #a71414;
+  font-family: 'Raleway', sans-serif;
+  font-size: 24px;
+  word-wrap: break-word;
+  width: .7em;
+  width: 1ch;
+  text-align: center;
+  user-select: none;
+  margin-bottom: 0;
+}
+
+.scroll-block {
+  position: relative;
+  cursor: pointer;
+}
+
+.scroll-block::after {
+  content: '';
+  position: absolute;
+  bottom: -50px;
+  left: -35px;
+  display: block;
+  width: 80px;
+  height: 80px;
+  border-bottom: 3px solid #a71414;
+  border-left: 3px solid #a71414;
+  transform: rotateZ(-45deg);
+}
