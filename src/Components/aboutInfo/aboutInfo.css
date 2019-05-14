@@ -1,0 +1,50 @@
+section.about {
+  align-self: flex-start;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 100;
+  font-size: 18px;
+  max-width: 900px;
+}
+
+section.about h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 100;
+  font-size: 24px;
+}
+
+.photo {
+  width: 190px;
+  height: 190px;
+  background-image: url(../../img/photo.jpg);
+  border-radius: 50%;
+  position: relative;
+  margin-left: 60px;
+  margin-top: 65px;
+}
+
+.photo::before {
+  content: '';
+  position: absolute;
+  display: block;
+  width: 230px;
+  height: 230px;
+  border-radius: 50%;
+  border: 3px solid #a2a2a2;
+  top: -20px;
+  left: -20px;
+  z-index: -2;
+  box-sizing: border-box;
+}
+
+.photo::after {
+  content: '';
+  position: absolute;
+  display: block;
+  width: 245px;
+  height: 80px;
+  background-color: #343434;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+}

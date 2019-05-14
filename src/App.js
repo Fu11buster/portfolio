@@ -5,6 +5,8 @@ import MainPage from './Components/mainPage/mainPage';
 import Container from './Components/container/container';
 import SideBlock from './Components/sideBlock/sideBlock';
 import SideTitle from './Components/sideTitle/sideTitle';
+import AboutInfo from './Components/aboutInfo/aboutInfo';
+import WorksPage from './Components/worksPage/worksPage';
 import menuList from './Components/mainMenu/menuList';
 
 import './App.css';
@@ -34,26 +36,24 @@ class App extends Component {
 
     this.setState({wheeling: true});
 
-    if (!this.state.functionCall) {
-      let ticking;
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          this.props.history.replace(this.getNextLocation(pathname, menuList, deltaY));
-          ticking = false;
-        });
+    let ticking;
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        this.props.history.replace(this.getNextLocation(pathname, menuList, deltaY));
+        ticking = false;
+      });
 
-        ticking = true;
-      }
+      ticking = true;
+    }
 
-      this.setState({functionCall: true});
-    };
+    this.setState({functionCall: true});
 
     setTimeout(() => {
       this.setState({
         wheeling: false,
         functionCall: false
       })
-    }, 1500);
+    }, 750);
   };
 
   getNextLocation = (location, locationsArray, deltaY) => {
@@ -81,6 +81,7 @@ class App extends Component {
           )} />
           <Route path='/about' exact render={() => (
             <Container>
+              <AboutInfo />
               <SideBlock>
                 <SideTitle titleText="About me" />
               </SideBlock>
@@ -88,6 +89,7 @@ class App extends Component {
           )} />
           <Route path='/works' exact render={() => (
             <Container>
+              <WorksPage />
               <SideBlock>
                 <SideTitle titleText="Works" />
               </SideBlock>

@@ -1,0 +1,12 @@
+.experiense-item:not(:last-child) {
+  margin-bottom: 15px;
+}
+
+.experiense-item p {
+  margin: 0;
+  margin-bottom: 3px;
+}
+
+.experiense-item p:not(:first-child) {
+  margin-left: 30px;
+}

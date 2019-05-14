@@ -1,0 +1,19 @@
+ul.skillsList {
+  padding-left: 20px;
+  list-style-type: none;
+}
+
+ul.skillsList li {
+  position: relative;
+  margin-bottom: 3px;
+}
+
+ul.skillsList li::before {
+  content: '';
+  position: absolute;
+  width: 1ch;
+  height: 1px;
+  background-color: #fff;
+  left: -20px;
+  top: 50%;
+}

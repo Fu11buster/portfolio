@@ -1,0 +1,44 @@
+section.skills-block {
+  margin-left: 45px;
+  margin-top: 65px;
+  min-height: 215px;
+}
+
+ul.skillsNav {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+ul.skillsNav li {
+  opacity: 0.5;
+  cursor: pointer;
+  user-select: none;
+  position: relative;
+  transition: opacity .3s ease;
+}
+
+ul.skillsNav li.active,
+ul.skillsNav li:hover {
+  opacity: 1;
+}
+
+ul.skillsNav li::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: #fff;
+  transition: width .3s ease;
+}
+
+ul.skillsNav li.active::before {
+  width: 1ch;
+}
+
+ul.skillsNav li:not(:last-child) {
+  margin-right: 50px;
+}
