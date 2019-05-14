@@ -1,26 +1,9 @@
 import React, { Component } from 'react';
 import MenuList from '../menuList/menuList';
 
-import './mainMenu.css';
+import menuList from './menuList';
 
-const menuList = [
-  {
-    name: 'Home',
-    link: '/'
-  },
-  {
-    name: 'About',
-    link: '/about'
-  },
-  {
-    name: 'Works',
-    link: '/works'
-  },
-  {
-    name: 'Contacts',
-    link: '/contacts'
-  }
-]
+import './mainMenu.css';
 
 export default class MainMenu extends Component {
   state = {
