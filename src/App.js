@@ -7,6 +7,7 @@ import SideBlock from './Components/sideBlock/sideBlock';
 import SideTitle from './Components/sideTitle/sideTitle';
 import AboutInfo from './Components/aboutInfo/aboutInfo';
 import WorksPage from './Components/worksPage/worksPage';
+import ContactsPage from './Components/contactsPage/contactsPage';
 import menuList from './Components/mainMenu/menuList';
 
 import './App.css';
@@ -34,7 +35,7 @@ class App extends Component {
     let deltaY = event.deltaY;
     if (this.state.wheeling || this.state.functionCall) return;
 
-    this.setState({wheeling: true});
+    this.setState({ wheeling: true });
 
     let ticking;
     if (!ticking) {
@@ -46,7 +47,7 @@ class App extends Component {
       ticking = true;
     }
 
-    this.setState({functionCall: true});
+    this.setState({ functionCall: true });
 
     setTimeout(() => {
       this.setState({
@@ -95,6 +96,8 @@ class App extends Component {
               </SideBlock>
             </Container>
           )} />
+
+          <Route path='/contacts' component={ContactsPage} />
 
         </Switch>
       </Fragment>

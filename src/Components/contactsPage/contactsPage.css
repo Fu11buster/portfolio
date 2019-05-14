@@ -1,0 +1,16 @@
+section.contacts {
+  height: 100vh;
+  width: calc(100%-60px);
+  margin-left: 60px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.feedback {
+  width: 50%;
+}
+
+section.contacts [class*=ymaps-2][class*=-ground-pane] {
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%)
+}
