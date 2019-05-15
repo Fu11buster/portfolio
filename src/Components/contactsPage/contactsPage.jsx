@@ -1,6 +1,7 @@
 import React from 'react';
 import YMap from '../YMaps/Ymaps';
 import Footer from '../footer/footer';
+import ContactForm from '../contactForm/contactForm';
 
 import './contactsPage.css';
 
@@ -9,10 +10,9 @@ const ContactPage = () => (
     <div className="feedback">
       <h3>Contact form</h3>
       <p>Let's create something together! <br/>
-        Or <a href="mailto:igonnacode@gmail.com">email me</a> if you want.
+        Or <a href="mailto:igonnacode@gmail.com">send me an email</a> if you want.
       </p>
-      <form action="/mail" method="POST" className="feedback__form">
-      </form>
+      <ContactForm />
     </div>
     <YMap />
     <Footer />

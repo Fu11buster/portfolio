@@ -1,0 +1,62 @@
+.feedback__form {
+  width: 505px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+.feedback__form textarea {
+  width: 100%;
+  height: 200px;
+  padding-top: 10px;
+}
+
+.feedback__form textarea,
+.feedback__form input {
+  border: 1px solid #bababa;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-top: 15px;
+  color: #000;
+  font-size: 18px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.feedback__form input:disabled {
+  color: rgb(107, 107, 107);
+}
+
+.feedback__form input {
+  height: 51px;
+  box-sizing: border-box;
+  width: 245px;
+}
+
+.feedback__form input[type="submit"] {
+  margin-left: auto;
+}
+
+.feedback__form::after {
+  content: "Now it's not available, because site hosted on github pages";
+  position: absolute;
+  background-color: #fff;
+  color: black;
+  font-size: 14px;
+  width: 170px;
+  padding: 15px;
+  left: calc(100% + 20px);
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0;
+  transition: opacity .3s ease;
+  pointer-events:none
+}
+
+.feedback__form:hover::after {
+  opacity: 1;
+}
+
+input.error {
+  border-color: #a71414;
+}
