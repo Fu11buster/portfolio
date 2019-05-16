@@ -23,6 +23,18 @@
   color: #61dafb;
 }
 
+.transition-enter-active {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.transition-exit.transition-exit-active {
+  z-index: 2;
+  opacity: 0;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

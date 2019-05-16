@@ -30,7 +30,7 @@ const WorksPage = () => (
     <h2>My latest works:</h2>
     <ul className="latest-works">
       {WORKS.map(work => (
-        <Work {...work} />
+        <Work {...work} key={work.title.toLowerCase()} />
       ))}
     </ul>
   </section>

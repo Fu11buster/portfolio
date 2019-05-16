@@ -1,6 +1,7 @@
 import React, { Fragment, Component } from 'react';
 import MainMenu from './Components/mainMenu/mainMenu';
 import { Switch, Route, withRouter } from 'react-router-dom';
+import { TransitionGroup, CSSTransition } from "react-transition-group";
 import MainPage from './Components/mainPage/mainPage';
 import Container from './Components/container/container';
 import SideBlock from './Components/sideBlock/sideBlock';
@@ -18,44 +19,59 @@ class App extends Component {
     functionCall: false
   }
 
-  shouldComponentUpdate() {
-    return false;
-  }
+  // componentDidMount() {
+  //   window.addEventListener("wheel", this.throttle());
+  // }
 
-  componentDidMount() {
-    window.addEventListener("wheel", this.onScroll);
-  }
+  // componentWillUnmount() {
+  //   window.removeEventListener("wheel", this.throttle());
+  // }
 
-  componentWillUnmount() {
-    window.removeEventListener("wheel", this.onScroll);
-  }
+  // throttle = (fn, wait) => {
+  //   var time = Date.now();
+  //   return function() {
+  //     if ((time + wait - Date.now()) < 0) {
+  //       fn();
+  //       time = Date.now();
+  //     }
+  //   }
+  // }
+  
+  // handleWheel = () => {
+  //   let pathname = this.props.history.location.pathname;
+  //   let deltaY = event.deltaY;
+  // }
 
-  onScroll = event => {
-    let pathname = this.props.history.location.pathname;
-    let deltaY = event.deltaY;
-    if (this.state.wheeling || this.state.functionCall) return;
+  // onScroll = event => {
+  //   let pathname = this.props.history.location.pathname;
+  //   let deltaY = event.deltaY;
+  //   if (this.state.wheeling || this.state.functionCall) return;
 
-    this.setState({ wheeling: true });
+  //   // let ticking;
+  //   // if (!ticking) {
+  //   //   window.requestAnimationFrame(() => {
+  //   //     const nextLocation = this.getNextLocation(pathname, menuList, deltaY);
+  //   //     if (nextLocation !== pathname && nextLocation !== undefined) {
+  //   //       this.props.history.push(nextLocation);
+  //   //     }
+  //   //     ticking = false;
+  //   //   });
 
-    let ticking;
-    if (!ticking) {
-      window.requestAnimationFrame(() => {
-        this.props.history.replace(this.getNextLocation(pathname, menuList, deltaY));
-        ticking = false;
-      });
+  //   //   ticking = true;
+  //   // }
 
-      ticking = true;
-    }
+  //   this.setState({
+  //     wheeling: true,
+  //     functionCall: true
+  //   });
 
-    this.setState({ functionCall: true });
-
-    setTimeout(() => {
-      this.setState({
-        wheeling: false,
-        functionCall: false
-      })
-    }, 750);
-  };
+  //   setTimeout(() => {
+  //     this.setState({
+  //       wheeling: false,
+  //       functionCall: false
+  //     })
+  //   }, 1500);
+  // };
 
   getNextLocation = (location, locationsArray, deltaY) => {
     let index = locationsArray.findIndex(el => el.link === location);
@@ -68,38 +84,44 @@ class App extends Component {
   }
 
   render() {
+    const location = this.props.history.location;
+    console.log(location.pathname);
     return (
       <Fragment>
         <MainMenu />
-        <Switch>
-          <Route path='/' exact render={() => (
-            <Container>
-              <MainPage />
-              <SideBlock>
-                <SideTitle titleText="Nikolay Stepin" />
-              </SideBlock>
-            </Container>
-          )} />
-          <Route path='/about' exact render={() => (
-            <Container>
-              <AboutInfo />
-              <SideBlock>
-                <SideTitle titleText="About me" />
-              </SideBlock>
-            </Container>
-          )} />
-          <Route path='/works' exact render={() => (
-            <Container>
-              <WorksPage />
-              <SideBlock>
-                <SideTitle titleText="Works" />
-              </SideBlock>
-            </Container>
-          )} />
+        <TransitionGroup component={null}>
+          <CSSTransition key={location.pathname} classNames="transition" timeout={7000}>
+            <Switch>
+              <Route path='/' exact render={() => (
+                <Container>
+                  <MainPage />
+                  <SideBlock>
+                    <SideTitle titleText="Nikolay Stepin" />
+                  </SideBlock>
+                </Container>
+              )} />
+              <Route path='/about' exact render={() => (
+                <Container>
+                  <AboutInfo />
+                  <SideBlock>
+                    <SideTitle titleText="About me" />
+                  </SideBlock>
+                </Container>
+              )} />
+              <Route path='/works' exact render={() => (
+                <Container>
+                  <WorksPage />
+                  <SideBlock>
+                    <SideTitle titleText="Works" />
+                  </SideBlock>
+                </Container>
+              )} />
 
-          <Route path='/contacts' component={ContactsPage} />
+              <Route path='/contacts' component={ContactsPage} />
 
-        </Switch>
+            </Switch>
+          </CSSTransition>
+        </TransitionGroup>
       </Fragment>
     )
   }

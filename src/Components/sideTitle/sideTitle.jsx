@@ -4,7 +4,7 @@ import './sideTitle.css';
 
 function correctText(text) {
   return text.split(' ').map(word => (
-    <span><span className='red-char'>{word.charAt(0)}</span>{word.slice(1) + ' '}</span>
+    <span key={word.toLowerCase()}><span className='red-char'>{word.charAt(0)}</span>{word.slice(1) + ' '}</span>
   ))
 }
 
