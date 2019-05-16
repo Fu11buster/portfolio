@@ -2,7 +2,7 @@ import React from 'react';
 import './container.css';
 
 const Container = ({children}) => (
-  <div className="container">
+  <div onWheel={(e) => {console.log(e.deltaY)}} className="container">
     {children}
   </div>
 )

@@ -14,4 +14,17 @@
   line-height: 250px;
   text-align: center;
   user-select: none;
+  height: 600px;
+}
+
+.transition-enter .side-title{
+  height: 0;
+  margin-bottom: 600px;
+  overflow: hidden;
+}
+
+.transition-enter.transition-enter-active .side-title{
+  margin-bottom: 0;
+  height: 600px;
+  transition: all .9s ease;
 }

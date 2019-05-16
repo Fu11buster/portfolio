@@ -1,6 +1,6 @@
 import React, { Fragment, Component } from 'react';
 import MainMenu from './Components/mainMenu/mainMenu';
-import { Switch, Route, withRouter } from 'react-router-dom';
+import { HashRouter as Router, Switch, Route, withRouter } from 'react-router-dom';
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import MainPage from './Components/mainPage/mainPage';
 import Container from './Components/container/container';
@@ -14,64 +14,49 @@ import menuList from './Components/mainMenu/menuList';
 import './App.css';
 
 class App extends Component {
-  state = {
-    wheeling: false,
-    functionCall: false
+  // state = {
+  //   wheeling: false,
+  //   functionCall: false
+  // }
+
+  componentDidMount() {
+    window.addEventListener("wheel", this.onScroll);
   }
 
-  // componentDidMount() {
-  //   window.addEventListener("wheel", this.throttle());
-  // }
+  componentWillUnmount() {
+    window.removeEventListener("wheel", this.onScroll);
+  }
 
-  // componentWillUnmount() {
-  //   window.removeEventListener("wheel", this.throttle());
-  // }
+  onScroll = event => {
+    let pathname = this.props.history.location.pathname;
+    let deltaY = event.deltaY;
+    if (this.wheeling || this.functionCall) return;
 
-  // throttle = (fn, wait) => {
-  //   var time = Date.now();
-  //   return function() {
-  //     if ((time + wait - Date.now()) < 0) {
-  //       fn();
-  //       time = Date.now();
-  //     }
-  //   }
-  // }
-  
-  // handleWheel = () => {
-  //   let pathname = this.props.history.location.pathname;
-  //   let deltaY = event.deltaY;
-  // }
+    let ticking;
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        const nextLocation = this.getNextLocation(pathname, menuList, deltaY);
+        if (nextLocation !== pathname && nextLocation !== undefined) {
+          this.changeLocation(nextLocation);
+        }
+        ticking = false;
+      });
 
-  // onScroll = event => {
-  //   let pathname = this.props.history.location.pathname;
-  //   let deltaY = event.deltaY;
-  //   if (this.state.wheeling || this.state.functionCall) return;
+      ticking = true;
+    }
 
-  //   // let ticking;
-  //   // if (!ticking) {
-  //   //   window.requestAnimationFrame(() => {
-  //   //     const nextLocation = this.getNextLocation(pathname, menuList, deltaY);
-  //   //     if (nextLocation !== pathname && nextLocation !== undefined) {
-  //   //       this.props.history.push(nextLocation);
-  //   //     }
-  //   //     ticking = false;
-  //   //   });
+    this.wheeling = true;
+    this.functionCall = true;
 
-  //   //   ticking = true;
-  //   // }
+    setTimeout(() => {
+      this.wheeling = false;
+      this.functionCall = false;
+    }, 1500);
+  };
 
-  //   this.setState({
-  //     wheeling: true,
-  //     functionCall: true
-  //   });
-
-  //   setTimeout(() => {
-  //     this.setState({
-  //       wheeling: false,
-  //       functionCall: false
-  //     })
-  //   }, 1500);
-  // };
+  changeLocation(nextLocation) {
+    this.props.history.push(nextLocation);
+  }
 
   getNextLocation = (location, locationsArray, deltaY) => {
     let index = locationsArray.findIndex(el => el.link === location);
@@ -90,10 +75,10 @@ class App extends Component {
       <Fragment>
         <MainMenu />
         <TransitionGroup component={null}>
-          <CSSTransition key={location.pathname} classNames="transition" timeout={7000}>
-            <Switch>
+          <CSSTransition key={location.pathname} classNames="transition" timeout={1000}>
+            <Switch location={location}>
               <Route path='/' exact render={() => (
-                <Container>
+                <Container onWheel={(e) => { console.log(e) }}>
                   <MainPage />
                   <SideBlock>
                     <SideTitle titleText="Nikolay Stepin" />
